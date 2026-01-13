@@ -159,7 +159,7 @@ In practice, almost always IN.
 
 ## DNS Answer
 
-![img](.\DNServer\assets\dns_answer.png)
+![img](/DNServer/assets/dns_answer.png)
 
 ### a. NAME (variable length)
 
@@ -286,5 +286,6 @@ MIT
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
 
 
