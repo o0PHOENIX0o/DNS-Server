@@ -31,11 +31,11 @@ A lightweight, Raspberry Pi–compatible DNS server with a web interface for man
 
 ## Architeture
 
-![architecture](.\DNServer\assets\Architecture.png)
+![architecture](/DNServer/assets/Architecture.png)
 
 ## DNS Header (12 bytes)
 
-![img](.\DNServer\assets\dns_header.png)
+![img](/DNServer/assets/dns_header.png)
 
 ### 1. ID (16 bits)
 
@@ -116,7 +116,7 @@ Number of resource records in the Additional Section. Often used for glue record
 
 ## DNS Question
 
-![img](.\DNServer\assets\dns_question.png)
+![img](/DNServer/assets/dns_question.png)
 
 ### a. QNAME (variable length)
 
@@ -286,4 +286,5 @@ MIT
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
 
