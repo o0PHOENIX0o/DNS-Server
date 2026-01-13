@@ -1,0 +1,18 @@
+[
+  {
+    "id": "e5b10d10-b917-45bc-8684-2a6d09bc899f",
+    "domain": "hello.com"
+  },
+  {
+    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "domain": "example.com"
+  },
+  {
+    "id": "e4d81bd1-641b-402a-bae2-1526d03ef1ea",
+    "domain": "google.com"
+  },
+  {
+    "id": "6e41831a-04a0-42ff-9fe3-2970ba0a9ffc",
+    "domain": "hello1.com"
+  }
+]

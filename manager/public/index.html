@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain Block Manager</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Particle animation canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <div class="container">
+        <header>
+            <h1>Domain Block Manager</h1>
+            <p class="subtitle">Manage your blocked host list</p>
+        </header>
+
+        <section class="form-section">
+            <form id="addDomainForm">
+                <div class="form-group">
+                    <input
+                        type="text"
+                        id="domainInput"
+                        placeholder="Enter domain name (e.g., example.com)"
+                        required
+                    >
+                    <button type="submit" class="btn">Add Domain</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="list-section">
+            <div class="list-header">Blocked Domains</div>
+            <ul class="domains-list" id="domainsList">
+                <!-- Rendered dynamically -->
+            </ul>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

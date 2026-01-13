@@ -1,0 +1,373 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0a0e1a;
+    color: #e0e7ff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Courier New', monospace;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+/* Added animated particle background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 204, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(138, 43, 226, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+    animation: gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 0.9;
+    }
+}
+
+canvas#particleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 50px;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #00ff88 0%, #00ccff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    text-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
+}
+
+.subtitle {
+    color: #a0aec0;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+}
+
+.form-section {
+    /* Enhanced background with gradient and backdrop blur */
+    background: linear-gradient(135deg, rgba(10, 14, 26, 0.8) 0%, rgba(15, 25, 50, 0.8) 100%);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 32px;
+    box-shadow: 0 8px 32px rgba(0, 255, 136, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    animation: fadeInUp 0.8s ease-out 0.1s both;
+}
+
+.form-group {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+input[type="text"] {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 204, 255, 0.3);
+    color: #e0e7ff;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #00ff88;
+    background: rgba(0, 255, 136, 0.05);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.2), inset 0 0 10px rgba(0, 255, 136, 0.05);
+}
+
+input[type="text"]::placeholder {
+    color: #64748b;
+}
+
+.btn {
+    padding: 14px 28px;
+    border: 1px solid rgba(0, 255, 136, 0.4);
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 204, 255, 0.05) 100%);
+    color: #00ff88;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Added smooth hover animation with glow effect */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(0, 255, 136, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover {
+    border-color: #00ff88;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.2) 0%, rgba(0, 204, 255, 0.1) 100%);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3), inset 0 0 10px rgba(0, 255, 136, 0.05);
+    transform: translateY(-2px);
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    border-color: rgba(0, 204, 255, 0.4);
+    color: #00ccff;
+    background: linear-gradient(135deg, rgba(0, 204, 255, 0.1) 0%, rgba(0, 255, 136, 0.05) 100%);
+    font-size: 0.85rem;
+}
+
+.btn-secondary:hover {
+    border-color: #00ccff;
+    background: linear-gradient(135deg, rgba(0, 204, 255, 0.2) 0%, rgba(0, 255, 136, 0.1) 100%);
+    box-shadow: 0 0 20px rgba(0, 204, 255, 0.3);
+}
+
+.btn-danger {
+    border-color: rgba(255, 0, 85, 0.4);
+    color: #ff6b9d;
+    background: linear-gradient(135deg, rgba(255, 0, 85, 0.1) 0%, rgba(255, 107, 157, 0.05) 100%);
+}
+
+.btn-danger:hover {
+    border-color: #ff6b9d;
+    background: linear-gradient(135deg, rgba(255, 0, 85, 0.2) 0%, rgba(255, 107, 157, 0.1) 100%);
+    box-shadow: 0 0 20px rgba(255, 107, 157, 0.3);
+}
+
+.list-section {
+    /* Enhanced background with gradient */
+    background: linear-gradient(135deg, rgba(10, 14, 26, 0.8) 0%, rgba(15, 25, 50, 0.8) 100%);
+    border: 1px solid rgba(0, 204, 255, 0.2);
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(0, 204, 255, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.list-header {
+    font-size: 1.2rem;
+    margin-bottom: 24px;
+    color: #00ccff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.domains-list {
+    list-style: none;
+    overflow: scroll;
+    max-height:20rem;
+}
+
+/* Enhanced domain items with smooth animations */
+.domain-item {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 204, 255, 0.03) 100%);
+    border: 1px solid rgba(0, 255, 136, 0.15);
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: slideInUp 0.4s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.domain-item:hover {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 204, 255, 0.08) 100%);
+    border-color: rgba(0, 255, 136, 0.4);
+    box-shadow: 0 8px 24px rgba(0, 255, 136, 0.15);
+    transform: translateY(-2px);
+}
+
+.domain-name {
+    color: #e0e7ff;
+    font-size: 1rem;
+    word-break: break-all;
+    flex: 1;
+    font-weight: 500;
+}
+
+.domain-actions {
+    display: flex;
+    gap: 8px;
+    margin-left: 16px;
+}
+
+.empty-state {
+    text-align: center;
+    color: #64748b;
+    padding: 48px 16px;
+    font-style: italic;
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.edit-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.4);
+    color: #e0e7ff;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    min-width: 200px;
+    transition: all 0.3s ease;
+}
+
+.edit-input:focus {
+    outline: none;
+    border-color: #00ff88;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+    background: rgba(0, 255, 136, 0.05);
+}
+
+.edit-mode {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .form-group {
+        flex-direction: column;
+    }
+
+    
+
+    .domain-actions {
+        margin-left: 0;
+        margin-top: 12px;
+    }
+
+    .form-section,
+    .list-section {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 400px) {
+.domain-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .btn{
+        padding: 6px 28px;
+    }
+}
